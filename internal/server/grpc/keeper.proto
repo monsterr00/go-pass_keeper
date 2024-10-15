@@ -1,0 +1,32 @@
+syntax = "proto3";
+package grpc;
+
+option go_package = "github.com/monsterr00/go-pass_keeper/internal/server/grpc";
+
+message Data {
+  bytes data = 1;
+  string dataType = 2;  
+}
+
+message AddDataRequest {
+  Data data = 1;
+}
+
+message AddDataResponse {
+  string error = 1;
+}
+
+message GetDataRequest {
+  Data data = 1;
+}
+
+message GetDataResponse {
+  Data data = 1;  
+}
+
+service KeeperData  {
+  rpc AddData(AddDataRequest) returns (AddDataResponse);
+  rpc GetData(GetDataRequest) returns (GetDataResponse);
+}
+
+
